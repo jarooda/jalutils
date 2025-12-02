@@ -80,14 +80,14 @@ import { union } from "jalutils/array";
 union([1, 2], [2, 3], [3, 4]); // [1, 2, 3, 4]
 ```
 
-#### `randomFromArray<T>(array: T[]): T`
+#### `sample<T>(array: T[]): T`
 
 Returns a random element from an array.
 
 ```typescript
-import { randomFromArray } from "jalutils/array";
+import { sample } from "jalutils/array";
 
-randomFromArray([1, 2, 3, 4, 5]); // Random element from the array
+sample([1, 2, 3, 4, 5]); // Random element from the array
 ```
 
 ### Function
