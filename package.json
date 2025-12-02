@@ -1,0 +1,77 @@
+{
+  "name": "jalutils",
+  "version": "0.1.0",
+  "author": "Jalu Wibowo Aji <jaluwibowoaji@gmail.com> (https://jaluwibowo.id)",
+  "license": "MIT",
+  "description": "A collection of utility functions for JavaScript and TypeScript.",
+  "keywords": [
+    "utils",
+    "utilities",
+    "javascript",
+    "typescript",
+    "utility-functions"
+  ],
+  "homepage": "https://github.com/jarooda/jalutils#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jarooda/jalutils"
+  },
+  "bugs": {
+    "url": "https://github.com/jarooda/jalutils/issues"
+  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./function": {
+      "types": "./dist/function/index.d.ts",
+      "import": "./dist/function/index.js",
+      "require": "./dist/function/index.js"
+    },
+    "./array": {
+      "types": "./dist/array/index.d.ts",
+      "import": "./dist/array/index.js",
+      "require": "./dist/array/index.js"
+    },
+    "./date": {
+      "types": "./dist/date/index.d.ts",
+      "import": "./dist/date/index.js",
+      "require": "./dist/date/index.js"
+    },
+    "./type": {
+      "types": "./dist/type/index.d.ts",
+      "import": "./dist/type/index.js",
+      "require": "./dist/type/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.48.1",
+    "@typescript-eslint/parser": "^8.48.1",
+    "eslint": "^9.39.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.6",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.15"
+  }
+}
