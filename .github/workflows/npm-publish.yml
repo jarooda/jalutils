@@ -35,5 +35,5 @@ jobs:
       - name: Run tests
         run: pnpm test
 
-      - name: Publish to npm with provenance
-        run: pnpm publish --provenance --no-git-checks --access public
+      - name: Publish to npm
+        run: pnpm publish
