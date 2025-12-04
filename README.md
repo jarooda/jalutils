@@ -28,9 +28,9 @@ yarn add jalutils
 - 🧪 **Well Tested**: Comprehensive test coverage
 - 📚 **Modular**: Import specific categories or individual functions
 
-## Demo
+## Docs
 
-Check out the interactive demo and examples [here](https://jalutils.jaluwibowo.id)
+Read the full docs and API reference on [here](https://jalutils.jaluwibowo.id)
 
 ## Usage
 
@@ -43,14 +43,59 @@ import { debounce, flatten, isNil, unix } from "jalutils";
 ### Import by Category
 
 ```typescript
-import { debounce, throttle, memoize } from "jalutils/function";
-import { flatten, intersection, union } from "jalutils/array";
-import { isNil, isNull, isUndefined } from "jalutils/type";
-import { unix } from "jalutils/date";
-import { capitalize } from "jalutils/string";
+import { debounce, throttle } from "jalutils/function";
 ```
 
-## Available Utilities
+### Examples
+
+#### Debouncing Search Input
+
+```typescript
+import { debounce } from "jalutils/function";
+
+// Debounce search to avoid excessive API calls
+const searchProducts = debounce((query: string) => {
+  fetch(`/api/search?q=${query}`)
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+}, 300);
+
+// In your component
+searchInput.addEventListener("input", (e) => {
+  searchProducts(e.target.value);
+});
+```
+
+#### Working with Arrays and Type Checking
+
+```typescript
+import { flatten, intersection } from "jalutils/array";
+import { isNil } from "jalutils/type";
+
+// Flatten nested data structures
+const categories = [
+  ["electronics", ["phones", "laptops"]],
+  ["clothing", ["shirts", "pants"]],
+];
+const allCategories = flatten(categories);
+// ['electronics', 'phones', 'laptops', 'clothing', 'shirts', 'pants']
+
+// Find common elements
+const userTags = ["javascript", "typescript", "react"];
+const jobTags = ["typescript", "react", "node"];
+const matchingSkills = intersection(userTags, jobTags);
+// ['typescript', 'react']
+
+// Safe property access
+function getUserEmail(user: { email?: string } | null) {
+  if (isNil(user) || isNil(user.email)) {
+    return "no-email@example.com";
+  }
+  return user.email;
+}
+```
+
+## API Reference
 
 ### Array
 

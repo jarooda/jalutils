@@ -1,24 +1,38 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: "Jalutils"
-  text: "A collection of utility functions for JavaScript and TypeScript. Lightweight, tree-shakeable, and fully typed."
-  tagline: My great project tagline
+  text: "Utility Functions for JavaScript & TypeScript"
+  tagline: Lightweight, tree-shakeable, and fully typed utilities for modern development
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Get Started
+      link: /guide/getting-started
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: API Reference
+      link: /api/array
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/jarooda/jalutils
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - icon: 🎯
+    title: TypeScript First
+    details: Written in TypeScript with full type definitions for excellent IDE support and type safety
+  - icon: 🌳
+    title: Tree-shakeable
+    details: Import only what you need. Modular design ensures minimal bundle size impact
+  - icon: 📦
+    title: Zero Dependencies
+    details: No external dependencies means faster installs and fewer security concerns
+  - icon: ⚡
+    title: Lightweight
+    details: Small footprint with optimized functions that won't bloat your bundle
+  - icon: 🧪
+    title: Well Tested
+    details: Comprehensive test coverage ensures reliability and correctness
+  - icon: 📚
+    title: Modular Design
+    details: Import specific categories or individual functions for maximum flexibility
 ---

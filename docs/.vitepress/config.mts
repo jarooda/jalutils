@@ -8,21 +8,42 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Guide', link: '/guide/getting-started' },
+      { text: 'API Reference', link: '/api/array' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Guide',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Getting Started', link: '/guide/getting-started' },
+          { text: 'Installation', link: '/guide/installation' },
+          { text: 'Usage', link: '/guide/usage' }
+        ]
+      },
+      {
+        text: 'API Reference',
+        items: [
+          { text: 'Array Utilities', link: '/api/array' },
+          { text: 'Function Utilities', link: '/api/function' },
+          { text: 'Type Utilities', link: '/api/type' },
+          { text: 'Date Utilities', link: '/api/date' },
+          { text: 'String Utilities', link: '/api/string' }
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+      { icon: 'github', link: 'https://github.com/jarooda/jalutils' }
+    ],
+
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2025 Jalu Wibowo Aji'
+    },
+
+    search: {
+      provider: 'local'
+    }
   }
 })
