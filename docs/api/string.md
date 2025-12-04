@@ -435,16 +435,241 @@ function truncateMiddle(text: string, maxLength: number): string {
 console.log(truncateMiddle("very-long-file-name.txt", 15)); // "very-l...ame.txt"
 ```
 
+## reverse
+
+Reverses the characters in a string.
+
+### Signature
+
+```typescript
+function reverse(str: string): string;
+```
+
+### Parameters
+
+- `str` - The string to reverse
+
+### Returns
+
+A new string with characters in reverse order.
+
+### Example
+
+```typescript
+import { reverse } from "jalutils/string";
+
+// Basic usage
+console.log(reverse("hello")); // "olleh"
+console.log(reverse("world")); // "dlrow"
+console.log(reverse("JavaScript")); // "tpircSavaJ"
+
+// With numbers
+console.log(reverse("123")); // "321"
+console.log(reverse("abc123")); // "321cba"
+
+// With spaces
+console.log(reverse("hello world")); // "dlrow olleh"
+console.log(reverse(" spaces ")); // " secaps "
+
+// With special characters
+console.log(reverse("hello!")); // "!olleh"
+console.log(reverse("@#$%")); // "%$#@"
+
+// Edge cases
+console.log(reverse("")); // ""
+console.log(reverse("a")); // "a"
+console.log(reverse("ab")); // "ba"
+
+// Practical examples
+
+// Check for palindromes
+function isPalindrome(str: string): boolean {
+  const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return cleaned === reverse(cleaned);
+}
+
+console.log(isPalindrome("A man a plan a canal Panama")); // true
+console.log(isPalindrome("racecar")); // true
+console.log(isPalindrome("hello")); // false
+
+// Reverse words in a sentence
+function reverseWords(sentence: string): string {
+  return sentence
+    .split(" ")
+    .map((word) => reverse(word))
+    .join(" ");
+}
+
+console.log(reverseWords("hello world")); // "olleh dlrow"
+console.log(reverseWords("The quick fox")); // "ehT kciuq xof"
+
+// Obfuscate/encode text (simple)
+function simpleEncode(text: string): string {
+  return reverse(text);
+}
+
+function simpleDecode(encoded: string): string {
+  return reverse(encoded);
+}
+
+const original = "secret message";
+const encoded = simpleEncode(original); // "egassem terces"
+const decoded = simpleDecode(encoded); // "secret message"
+console.log({ original, encoded, decoded });
+
+// Animation or display effects
+function createReverseEffect(text: string): string[] {
+  const frames: string[] = [];
+  for (let i = 0; i <= text.length; i++) {
+    frames.push(reverse(text.slice(0, i)) + text.slice(i));
+  }
+  return frames;
+}
+
+console.log(createReverseEffect("hello"));
+// ["hello", "ehllo", "ehllo", "ellho", "olleh", "olleh"]
+
+// Suffix extraction (reverse operations)
+function extractExtension(filename: string): string {
+  const reversed = reverse(filename);
+  const dotIndex = reversed.indexOf(".");
+  if (dotIndex === -1) return "";
+  return reverse(reversed.slice(0, dotIndex));
+}
+
+console.log(extractExtension("document.pdf")); // "pdf"
+console.log(extractExtension("archive.tar.gz")); // "gz"
+
+// Mirror text display
+function mirrorDisplay(text: string): string {
+  return `${text} | ${reverse(text)}`;
+}
+
+console.log(mirrorDisplay("CODE")); // "CODE | EDOC"
+console.log(mirrorDisplay("12345")); // "12345 | 54321"
+
+// Reverse for comparison
+function compareReversed(str1: string, str2: string): boolean {
+  return reverse(str1) === str2;
+}
+
+console.log(compareReversed("abc", "cba")); // true
+console.log(compareReversed("hello", "world")); // false
+
+// Queue/Stack simulation with strings
+function reverseOrder(items: string): string {
+  // Reverse the order of characters
+  return reverse(items);
+}
+
+console.log(reverseOrder("ABCD")); // "DCBA"
+
+// Text transformation games
+function createCipher(text: string, reverse: boolean): string {
+  return reverse ? reverse(text) : text;
+}
+
+console.log(createCipher("message", true)); // "egassem"
+console.log(createCipher("message", false)); // "message"
+```
+
+### Use Cases
+
+- **Palindrome checking**: Verify if text reads the same forwards and backwards
+- **String manipulation**: Reverse words or sentences for display
+- **Simple encoding**: Basic text obfuscation
+- **Algorithm challenges**: Common interview question implementation
+- **Text effects**: Create visual effects or animations
+- **Data processing**: Reverse sequences for specific use cases
+- **Comparison operations**: Check if strings are reverses of each other
+- **Fun text transformations**: Mirror or flip text displays
+
+### Behavior Details
+
+```typescript
+import { reverse } from "jalutils/string";
+
+// Character order is reversed
+reverse("abc"); // "cba"
+reverse("123"); // "321"
+
+// Preserves spaces and special characters
+reverse("hello world"); // "dlrow olleh"
+reverse("hello!"); // "!olleh"
+reverse("a b c"); // "c b a"
+
+// Works with Unicode
+reverse("café"); // "éfac"
+reverse("🎉🎊"); // "🎊🎉"
+reverse("привет"); // "тевирп"
+
+// Empty or single character
+reverse(""); // ""
+reverse("a"); // "a"
+
+// Whitespace preserved
+reverse(" "); // " "
+reverse("  hello  "); // "  olleh  "
+```
+
+### Notes
+
+- Returns a new string (does not mutate the original)
+- Preserves all characters including spaces and special characters
+- Handles empty strings gracefully
+- Works with Unicode characters
+- Single character strings return themselves
+- Reverses at character level, not byte level
+
+### Common Patterns
+
+```typescript
+import { reverse } from "jalutils/string";
+
+// Palindrome checker
+function isPalindrome(str: string): boolean {
+  const normalized = str.toLowerCase().replace(/\s+/g, "");
+  return normalized === reverse(normalized);
+}
+
+// Reverse each word but keep word order
+function reverseWords(sentence: string): string {
+  return sentence
+    .split(" ")
+    .map((word) => reverse(word))
+    .join(" ");
+}
+
+// Reverse word order but keep each word
+function reverseWordOrder(sentence: string): string {
+  return sentence.split(" ").reverse().join(" ");
+}
+
+console.log(reverseWordOrder("hello world")); // "world hello"
+
+// Double reverse (returns original)
+function doubleReverse(str: string): string {
+  return reverse(reverse(str));
+}
+
+console.log(doubleReverse("hello")); // "hello"
+
+// Conditional reverse
+function conditionalReverse(str: string, shouldReverse: boolean): string {
+  return shouldReverse ? reverse(str) : str;
+}
+```
+
 ## Import
 
 ::: code-group
 
 ```typescript [Category Import (Recommended)]
-import { capitalize, truncate } from "jalutils/string";
+import { capitalize, truncate, reverse } from "jalutils/string";
 ```
 
 ```typescript [Named Import]
-import { capitalize, truncate } from "jalutils";
+import { capitalize, truncate, reverse } from "jalutils";
 ```
 
 :::
