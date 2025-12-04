@@ -56,6 +56,7 @@ export default defineConfig({
             link: '/api/string',
             items: [
               { text: 'capitalize', link: '/api/string#capitalize' },
+              { text: 'reverse', link: '/api/string#reverse' },
               { text: 'truncate', link: '/api/string#truncate' }
             ]
           },
