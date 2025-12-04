@@ -28,6 +28,10 @@ yarn add jalutils
 - 🧪 **Well Tested**: Comprehensive test coverage
 - 📚 **Modular**: Import specific categories or individual functions
 
+## Docs
+
+Read the full docs and API reference on [here](https://jalutils.jaluwibowo.id)
+
 ## Usage
 
 ### Import Everything
@@ -39,182 +43,104 @@ import { debounce, flatten, isNil, unix } from "jalutils";
 ### Import by Category
 
 ```typescript
-import { debounce, throttle, memoize } from "jalutils/function";
-import { flatten, intersection, union } from "jalutils/array";
-import { isNil, isNull, isUndefined } from "jalutils/type";
-import { unix } from "jalutils/date";
-import { capitalize } from "jalutils/string";
+import { debounce, throttle } from "jalutils/function";
+```
+
+### Examples
+
+#### Debouncing Search Input
+
+```typescript
+import { debounce } from "jalutils/function";
+
+// Debounce search to avoid excessive API calls
+const searchProducts = debounce((query: string) => {
+  fetch(`/api/search?q=${query}`)
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+}, 300);
+
+// In your component
+searchInput.addEventListener("input", (e) => {
+  searchProducts(e.target.value);
+});
+```
+
+#### Working with Arrays and Type Checking
+
+```typescript
+import { flatten, intersection } from "jalutils/array";
+import { isNil } from "jalutils/type";
+
+// Flatten nested data structures
+const categories = [
+  ["electronics", ["phones", "laptops"]],
+  ["clothing", ["shirts", "pants"]],
+];
+const allCategories = flatten(categories);
+// ['electronics', 'phones', 'laptops', 'clothing', 'shirts', 'pants']
+
+// Find common elements
+const userTags = ["javascript", "typescript", "react"];
+const jobTags = ["typescript", "react", "node"];
+const matchingSkills = intersection(userTags, jobTags);
+// ['typescript', 'react']
+
+// Safe property access
+function getUserEmail(user: { email?: string } | null) {
+  if (isNil(user) || isNil(user.email)) {
+    return "no-email@example.com";
+  }
+  return user.email;
+}
 ```
 
 ## API Reference
 
 ### Array
 
-#### `flatten<T>(array: T[]): T[]`
-
-Recursively flattens a nested array.
-
-```typescript
-import { flatten } from "jalutils/array";
-
-flatten([1, [2, [3, 4], 5]]); // [1, 2, 3, 4, 5]
-```
-
-#### `intersection<T>(...arrays: T[][]): T[]`
-
-Returns an array of unique values that are present in all given arrays.
-
-```typescript
-import { intersection } from "jalutils/array";
-
-intersection([1, 2, 3], [2, 3, 4], [2, 3, 5]); // [2, 3]
-```
-
-#### `union<T>(...arrays: T[][]): T[]`
-
-Returns an array of unique values from all given arrays.
-
-```typescript
-import { union } from "jalutils/array";
-
-union([1, 2], [2, 3], [3, 4]); // [1, 2, 3, 4]
-```
-
-#### `sample<T>(array: T[]): T`
-
-Returns a random element from an array.
-
-```typescript
-import { sample } from "jalutils/array";
-
-sample([1, 2, 3, 4, 5]); // Random element from the array
-```
+| Function       | Signature                                | Description                                |
+| -------------- | ---------------------------------------- | ------------------------------------------ |
+| `flatten`      | `flatten<T>(array: T[]): T[]`            | Flattens nested arrays into a single array |
+| `intersection` | `intersection<T>(...arrays: T[][]): T[]` | Returns values present in all arrays       |
+| `union`        | `union<T>(...arrays: T[][]): T[]`        | Combines arrays into unique values         |
+| `sample`       | `sample<T>(array: T[]): T`               | Returns a random element from an array     |
 
 ### Function
 
-#### `debounce<T>(func: T, wait: number): (...args: Parameters<T>) => void`
-
-Creates a debounced function that delays invoking `func` until after `wait` milliseconds have elapsed since the last time it was invoked.
-
-```typescript
-import { debounce } from "jalutils/function";
-
-const debouncedSearch = debounce((query: string) => {
-  console.log("Searching for:", query);
-}, 300);
-
-debouncedSearch("hello"); // Will only execute after 300ms of no calls
-```
-
-#### `throttle<T>(func: T, wait: number): (...args: Parameters<T>) => void`
-
-Creates a throttled function that only invokes `func` at most once per every `wait` milliseconds.
-
-```typescript
-import { throttle } from "jalutils/function";
-
-const throttledScroll = throttle(() => {
-  console.log("Scroll event handled");
-}, 100);
-
-window.addEventListener("scroll", throttledScroll);
-```
-
-#### `memoize<T>(func: T): (...args: Parameters<T>) => ReturnType<T>`
-
-Creates a memoized function that caches the result of `func` based on its arguments.
-
-```typescript
-import { memoize } from "jalutils/function";
-
-const expensiveCalculation = memoize((n: number) => {
-  return n * n;
-});
-
-expensiveCalculation(5); // Calculates and caches
-expensiveCalculation(5); // Returns cached result
-```
+| Function   | Signature                                                              | Description                                                 |
+| ---------- | ---------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `debounce` | `debounce<T>(func: T, wait: number): (...args: Parameters<T>) => void` | Delays function execution until after a specified wait time |
+| `throttle` | `throttle<T>(func: T, wait: number): (...args: Parameters<T>) => void` | Limits function execution to once per specified interval    |
+| `memoize`  | `memoize<T>(func: T): (...args: Parameters<T>) => ReturnType<T>`       | Caches function results based on arguments                  |
 
 ### Type
 
-#### `isNil(value: unknown): value is null | undefined`
-
-Checks if a value is `null` or `undefined`.
-
-```typescript
-import { isNil } from "jalutils/type";
-
-isNil(null); // true
-isNil(undefined); // true
-isNil(0); // false
-isNil(""); // false
-```
-
-#### `isNull(value: unknown): value is null`
-
-Checks if a value is `null`.
-
-```typescript
-import { isNull } from "jalutils/type";
-
-isNull(null); // true
-isNull(undefined); // false
-```
-
-#### `isUndefined(value: unknown): value is undefined`
-
-Checks if a value is `undefined`.
-
-```typescript
-import { isUndefined } from "jalutils/type";
-
-isUndefined(undefined); // true
-isUndefined(null); // false
-```
+| Function      | Signature                                           | Description                                |
+| ------------- | --------------------------------------------------- | ------------------------------------------ |
+| `isNil`       | `isNil(value: unknown): value is null \| undefined` | Checks if a value is `null` or `undefined` |
+| `isNull`      | `isNull(value: unknown): value is null`             | Checks if a value is `null`                |
+| `isUndefined` | `isUndefined(value: unknown): value is undefined`   | Checks if a value is `undefined`           |
 
 ### Date
 
-#### `unix(date: Date | string | number): number`
-
-Converts a date to Unix timestamp (seconds since epoch).
-
-```typescript
-import { unix } from "jalutils/date";
-
-unix(new Date("2024-01-01")); // 1704067200
-unix("2024-01-01"); // 1704067200
-unix(1704067200000); // 1704067200 (converts milliseconds to seconds)
-```
+| Function | Signature                                      | Description                                             |
+| -------- | ---------------------------------------------- | ------------------------------------------------------- |
+| `unix`   | `unix(date: Date \| string \| number): number` | Converts a date to Unix timestamp (seconds since epoch) |
 
 ### String
 
-#### `capitalize(str: string): string`
-
-Capitalizes the first alphabetic character of a string. Handles leading spaces intelligently.
-
-```typescript
-import { capitalize } from "jalutils/string";
-
-capitalize("hello"); // 'Hello'
-capitalize("hello world"); // 'Hello world'
-capitalize("  hello"); // '  Hello'
-capitalize("123abc"); // '123abc' (no change, first char not alphabetic)
-```
+| Function     | Signature                         | Description                              |
+| ------------ | --------------------------------- | ---------------------------------------- |
+| `capitalize` | `capitalize(str: string): string` | Capitalizes the first letter of a string |
 
 ## Development
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Run tests
-pnpm test
-
-# Build
-pnpm build
-
-# Run demo/dev server
-pnpm dev
+pnpm install  # Install dependencies
+pnpm test     # Run tests
+pnpm build    # Build package
+pnpm dev      # Run development server
 ```
 
 ## Contributing
