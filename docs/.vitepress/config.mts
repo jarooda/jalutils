@@ -9,7 +9,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/getting-started' },
-      { text: 'API Reference', link: '/api/array' }
+      { text: 'API Reference', link: '/api/' }
     ],
 
     sidebar: [
@@ -24,11 +24,50 @@ export default defineConfig({
       {
         text: 'API Reference',
         items: [
-          { text: 'Array Utilities', link: '/api/array' },
-          { text: 'Function Utilities', link: '/api/function' },
-          { text: 'Type Utilities', link: '/api/type' },
-          { text: 'Date Utilities', link: '/api/date' },
-          { text: 'String Utilities', link: '/api/string' }
+          { text: 'Overview', link: '/api/' },
+          {
+            text: 'Array',
+            link: '/api/array',
+            items: [
+              { text: 'flatten', link: '/api/array#flatten' },
+              { text: 'intersection', link: '/api/array#intersection' },
+              { text: 'sample', link: '/api/array#sample' },
+              { text: 'union', link: '/api/array#union' }
+            ]
+          },
+          {
+            text: 'Date',
+            link: '/api/date',
+            items: [
+              { text: 'unix', link: '/api/date#unix' }
+            ]
+          },
+          {
+            text: 'Function',
+            link: '/api/function',
+            items: [
+              { text: 'debounce', link: '/api/function#debounce' },
+              { text: 'memoize', link: '/api/function#memoize' },
+              { text: 'throttle', link: '/api/function#throttle' }
+            ]
+          },
+          {
+            text: 'String',
+            link: '/api/string',
+            items: [
+              { text: 'capitalize', link: '/api/string#capitalize' },
+              { text: 'truncate', link: '/api/string#truncate' }
+            ]
+          },
+          {
+            text: 'Type',
+            link: '/api/type',
+            items: [
+              { text: 'isNil', link: '/api/type#isnil' },
+              { text: 'isNull', link: '/api/type#isnull' },
+              { text: 'isUndefined', link: '/api/type#isundefined' }
+            ]
+          }
         ]
       }
     ],

@@ -74,87 +74,6 @@ const validateEmail = debounce((email: string) => {
 
 ---
 
-## throttle
-
-Limits function execution to once per specified time interval. Unlike debounce, throttle ensures the function is called at regular intervals during continuous events.
-
-### Signature
-
-```typescript
-function throttle<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number,
-): (...args: Parameters<T>) => void;
-```
-
-### Parameters
-
-- `func` - The function to throttle
-- `wait` - The number of milliseconds between allowed executions
-
-### Returns
-
-A throttled version of the function.
-
-### Example
-
-```typescript
-import { throttle } from "jalutils/function";
-
-// Scroll event handler
-const handleScroll = throttle(() => {
-  console.log("Scroll position:", window.scrollY);
-  // Update scroll indicator
-}, 100);
-
-window.addEventListener("scroll", handleScroll);
-
-// Mouse move tracker
-const trackMouse = throttle((e: MouseEvent) => {
-  console.log(`Position: ${e.clientX}, ${e.clientY}`);
-}, 50);
-
-document.addEventListener("mousemove", trackMouse);
-
-// Button click protection
-const submitForm = throttle(() => {
-  console.log("Form submitted");
-  // API call
-}, 1000);
-
-// API polling
-const checkStatus = throttle(() => {
-  fetch("/api/status")
-    .then((res) => res.json())
-    .then((data) => console.log(data));
-}, 5000);
-```
-
-### Use Cases
-
-- **Scroll events**: Update UI during scrolling without overwhelming performance
-- **Mouse tracking**: Track mouse position at regular intervals
-- **Button clicks**: Prevent multiple rapid submissions
-- **API polling**: Regular status checks without overwhelming the server
-- **Game loops**: Limit frame rate or update frequency
-
-### Debounce vs Throttle
-
-| Aspect        | Debounce                      | Throttle                       |
-| ------------- | ----------------------------- | ------------------------------ |
-| **Execution** | After inactivity period       | At regular intervals           |
-| **Frequency** | Once after events stop        | Multiple times during events   |
-| **Use case**  | Search input, form validation | Scroll, mouse move, animations |
-
-### Notes
-
-- Executes immediately on first call, then enforces the wait period
-- Subsequent calls within the wait period are ignored
-- Does not queue or batch function calls
-- TypeScript preserves the parameter types of the original function
-
----
-
 ## memoize
 
 Caches function results based on arguments, improving performance for expensive computations with repeated inputs.
@@ -243,16 +162,97 @@ The cache key is created by JSON stringifying the arguments:
 
 ---
 
+## throttle
+
+Limits function execution to once per specified time interval. Unlike debounce, throttle ensures the function is called at regular intervals during continuous events.
+
+### Signature
+
+```typescript
+function throttle<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number,
+): (...args: Parameters<T>) => void;
+```
+
+### Parameters
+
+- `func` - The function to throttle
+- `wait` - The number of milliseconds between allowed executions
+
+### Returns
+
+A throttled version of the function.
+
+### Example
+
+```typescript
+import { throttle } from "jalutils/function";
+
+// Scroll event handler
+const handleScroll = throttle(() => {
+  console.log("Scroll position:", window.scrollY);
+  // Update scroll indicator
+}, 100);
+
+window.addEventListener("scroll", handleScroll);
+
+// Mouse move tracker
+const trackMouse = throttle((e: MouseEvent) => {
+  console.log(`Position: ${e.clientX}, ${e.clientY}`);
+}, 50);
+
+document.addEventListener("mousemove", trackMouse);
+
+// Button click protection
+const submitForm = throttle(() => {
+  console.log("Form submitted");
+  // API call
+}, 1000);
+
+// API polling
+const checkStatus = throttle(() => {
+  fetch("/api/status")
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+}, 5000);
+```
+
+### Use Cases
+
+- **Scroll events**: Update UI during scrolling without overwhelming performance
+- **Mouse tracking**: Track mouse position at regular intervals
+- **Button clicks**: Prevent multiple rapid submissions
+- **API polling**: Regular status checks without overwhelming the server
+- **Game loops**: Limit frame rate or update frequency
+
+### Debounce vs Throttle
+
+| Aspect        | Debounce                      | Throttle                       |
+| ------------- | ----------------------------- | ------------------------------ |
+| **Execution** | After inactivity period       | At regular intervals           |
+| **Frequency** | Once after events stop        | Multiple times during events   |
+| **Use case**  | Search input, form validation | Scroll, mouse move, animations |
+
+### Notes
+
+- Executes immediately on first call, then enforces the wait period
+- Subsequent calls within the wait period are ignored
+- Does not queue or batch function calls
+- TypeScript preserves the parameter types of the original function
+
+---
+
 ## Import
 
 ::: code-group
 
 ```typescript [Category Import (Recommended)]
-import { debounce, throttle, memoize } from "jalutils/function";
+import { debounce, memoize, throttle } from "jalutils/function";
 ```
 
 ```typescript [Named Import]
-import { debounce, throttle, memoize } from "jalutils";
+import { debounce, memoize, throttle } from "jalutils";
 ```
 
 :::

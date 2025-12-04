@@ -161,10 +161,4 @@ function example(value: string | null | undefined) {
 
 ## Next Steps
 
-Explore detailed documentation for each category:
-
-- [Array Utilities](/api/array)
-- [Function Utilities](/api/function)
-- [Type Utilities](/api/type)
-- [Date Utilities](/api/date)
-- [String Utilities](/api/string)
+Explore the [API Reference](/api/) for detailed documentation on all available utilities.

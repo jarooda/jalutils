@@ -100,6 +100,58 @@ console.log(none); // []
 
 ---
 
+## sample
+
+Returns a random element from an array.
+
+### Signature
+
+```typescript
+function sample<T>(array: T[]): T;
+```
+
+### Parameters
+
+- `array` - The array to sample from
+
+### Returns
+
+A random element from the input array.
+
+### Example
+
+```typescript
+import { sample } from "jalutils/array";
+
+// Basic usage
+const numbers = [1, 2, 3, 4, 5];
+const random = sample(numbers);
+console.log(random); // e.g., 3 (varies each time)
+
+// With strings
+const fruits = ["apple", "banana", "cherry"];
+const randomFruit = sample(fruits);
+console.log(randomFruit); // e.g., 'banana'
+
+// With objects
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" },
+];
+const randomUser = sample(users);
+console.log(randomUser); // e.g., { id: 2, name: 'Bob' }
+```
+
+### Notes
+
+- Uses `Math.random()` for random selection
+- Each element has an equal probability of being selected
+- Returns `undefined` if the array is empty
+- Does not mutate the original array
+
+---
+
 ## union
 
 Combines multiple arrays into a single array of unique values.
@@ -153,68 +205,16 @@ console.log(single); // [1, 2, 3]
 
 ---
 
-## sample
-
-Returns a random element from an array.
-
-### Signature
-
-```typescript
-function sample<T>(array: T[]): T;
-```
-
-### Parameters
-
-- `array` - The array to sample from
-
-### Returns
-
-A random element from the input array.
-
-### Example
-
-```typescript
-import { sample } from "jalutils/array";
-
-// Basic usage
-const numbers = [1, 2, 3, 4, 5];
-const random = sample(numbers);
-console.log(random); // e.g., 3 (varies each time)
-
-// With strings
-const fruits = ["apple", "banana", "cherry"];
-const randomFruit = sample(fruits);
-console.log(randomFruit); // e.g., 'banana'
-
-// With objects
-const users = [
-  { id: 1, name: "Alice" },
-  { id: 2, name: "Bob" },
-  { id: 3, name: "Charlie" },
-];
-const randomUser = sample(users);
-console.log(randomUser); // e.g., { id: 2, name: 'Bob' }
-```
-
-### Notes
-
-- Uses `Math.random()` for random selection
-- Each element has an equal probability of being selected
-- Returns `undefined` if the array is empty
-- Does not mutate the original array
-
----
-
 ## Import
 
 ::: code-group
 
 ```typescript [Category Import (Recommended)]
-import { flatten, intersection, union, sample } from "jalutils/array";
+import { flatten, intersection, sample, union } from "jalutils/array";
 ```
 
 ```typescript [Named Import]
-import { flatten, intersection, union, sample } from "jalutils";
+import { flatten, intersection, sample, union } from "jalutils";
 ```
 
 :::
