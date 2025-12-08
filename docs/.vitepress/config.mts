@@ -55,8 +55,13 @@ export default defineConfig({
             text: 'String',
             link: '/api/string',
             items: [
+              { text: 'camelCase', link: '/api/string#camelcase' },
               { text: 'capitalize', link: '/api/string#capitalize' },
+              { text: 'kebabCase', link: '/api/string#kebabcase' },
+              { text: 'randomString', link: '/api/string#randomstring' },
               { text: 'reverse', link: '/api/string#reverse' },
+              { text: 'snakeCase', link: '/api/string#snakecase' },
+              { text: 'stripTags', link: '/api/string#striptags' },
               { text: 'truncate', link: '/api/string#truncate' }
             ]
           },
