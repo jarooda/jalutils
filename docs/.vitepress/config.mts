@@ -69,8 +69,15 @@ export default defineConfig({
             text: 'Type',
             link: '/api/type',
             items: [
+              { text: 'isBoolean', link: '/api/type#isboolean' },
+              { text: 'isFunction', link: '/api/type#isfunction' },
+              { text: 'isIterable', link: '/api/type#isiterable' },
               { text: 'isNil', link: '/api/type#isnil' },
               { text: 'isNull', link: '/api/type#isnull' },
+              { text: 'isNumber', link: '/api/type#isnumber' },
+              { text: 'isPlainObject', link: '/api/type#isplainobject' },
+              { text: 'isPromise', link: '/api/type#ispromise' },
+              { text: 'isString', link: '/api/type#isstring' },
               { text: 'isUndefined', link: '/api/type#isundefined' }
             ]
           }

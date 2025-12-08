@@ -2,6 +2,125 @@
 
 Type checking utilities with TypeScript type guards for safer code.
 
+## isBoolean
+
+Checks if a value is a boolean.
+
+### Signature
+
+```typescript
+function isBoolean(value: unknown): value is boolean;
+```
+
+### Parameters
+
+- `value` - The value to check
+
+### Returns
+
+`true` if the value is a boolean, `false` otherwise.
+
+### Example
+
+```typescript
+import { isBoolean } from "jalutils/type";
+
+console.log(isBoolean(true)); // true
+console.log(isBoolean(false)); // true
+console.log(isBoolean(0)); // false
+console.log(isBoolean("true")); // false
+
+// Type guard
+function toggle(value: unknown) {
+  if (isBoolean(value)) {
+    return !value; // TypeScript knows value is boolean
+  }
+  return false;
+}
+```
+
+---
+
+## isFunction
+
+Checks if a value is a function.
+
+### Signature
+
+```typescript
+function isFunction(value: unknown): value is (...args: unknown[]) => unknown;
+```
+
+### Parameters
+
+- `value` - The value to check
+
+### Returns
+
+`true` if the value is a function, `false` otherwise.
+
+### Example
+
+```typescript
+import { isFunction } from "jalutils/type";
+
+console.log(isFunction(() => {})); // true
+console.log(isFunction(function () {})); // true
+console.log(isFunction(class {})); // true
+console.log(isFunction("function")); // false
+
+// Type guard
+function execute(callback: unknown) {
+  if (isFunction(callback)) {
+    callback(); // TypeScript knows callback is a function
+  }
+}
+```
+
+---
+
+## isIterable
+
+Checks if a value is iterable (has a Symbol.iterator method).
+
+### Signature
+
+```typescript
+function isIterable(value: unknown): value is Iterable<unknown>;
+```
+
+### Parameters
+
+- `value` - The value to check
+
+### Returns
+
+`true` if the value is iterable, `false` otherwise.
+
+### Example
+
+```typescript
+import { isIterable } from "jalutils/type";
+
+console.log(isIterable([1, 2, 3])); // true
+console.log(isIterable("hello")); // true
+console.log(isIterable(new Set())); // true
+console.log(isIterable(new Map())); // true
+console.log(isIterable(123)); // false
+console.log(isIterable({})); // false
+
+// Type guard
+function processIterable(value: unknown) {
+  if (isIterable(value)) {
+    for (const item of value) {
+      console.log(item);
+    }
+  }
+}
+```
+
+---
+
 ## isNil
 
 Checks if a value is `null` or `undefined`. TypeScript type guard that narrows the type.
@@ -178,6 +297,164 @@ function processResponse(response: ApiResponse) {
 
 ---
 
+## isNumber
+
+Checks if a value is a number (including NaN and Infinity).
+
+### Signature
+
+```typescript
+function isNumber(value: unknown): value is number;
+```
+
+### Parameters
+
+- `value` - The value to check
+
+### Returns
+
+`true` if the value is a number, `false` otherwise.
+
+### Example
+
+```typescript
+import { isNumber } from "jalutils/type";
+
+console.log(isNumber(42)); // true
+console.log(isNumber(3.14)); // true
+console.log(isNumber(NaN)); // true
+console.log(isNumber(Infinity)); // true
+console.log(isNumber("123")); // false
+
+// Type guard
+function double(value: unknown) {
+  if (isNumber(value)) {
+    return value * 2; // TypeScript knows value is number
+  }
+  return 0;
+}
+```
+
+---
+
+## isPlainObject
+
+Checks if a value is a plain object (created by `{}` or `Object.create(null)`).
+
+### Signature
+
+```typescript
+function isPlainObject(value: unknown): value is Record<string, unknown>;
+```
+
+### Parameters
+
+- `value` - The value to check
+
+### Returns
+
+`true` if the value is a plain object, `false` otherwise.
+
+### Example
+
+```typescript
+import { isPlainObject } from "jalutils/type";
+
+console.log(isPlainObject({})); // true
+console.log(isPlainObject({ a: 1 })); // true
+console.log(isPlainObject(Object.create(null))); // true
+console.log(isPlainObject([])); // false
+console.log(isPlainObject(new Date())); // false
+console.log(isPlainObject(null)); // false
+
+// Type guard
+function merge(target: unknown, source: unknown) {
+  if (isPlainObject(target) && isPlainObject(source)) {
+    return { ...target, ...source };
+  }
+  return {};
+}
+```
+
+---
+
+## isPromise
+
+Checks if a value is a Promise.
+
+### Signature
+
+```typescript
+function isPromise(value: unknown): value is Promise<unknown>;
+```
+
+### Parameters
+
+- `value` - The value to check
+
+### Returns
+
+`true` if the value is a Promise, `false` otherwise.
+
+### Example
+
+```typescript
+import { isPromise } from "jalutils/type";
+
+console.log(isPromise(Promise.resolve())); // true
+console.log(isPromise(new Promise(() => {}))); // true
+console.log(isPromise({ then: () => {} })); // false
+
+// Type guard
+async function handle(value: unknown) {
+  if (isPromise(value)) {
+    const result = await value; // TypeScript knows value is Promise
+    console.log(result);
+  }
+}
+```
+
+---
+
+## isString
+
+Checks if a value is a string.
+
+### Signature
+
+```typescript
+function isString(value: unknown): value is string;
+```
+
+### Parameters
+
+- `value` - The value to check
+
+### Returns
+
+`true` if the value is a string, `false` otherwise.
+
+### Example
+
+```typescript
+import { isString } from "jalutils/type";
+
+console.log(isString("hello")); // true
+console.log(isString("")); // true
+console.log(isString(`template`)); // true
+console.log(isString(123)); // false
+
+// Type guard
+function uppercase(value: unknown) {
+  if (isString(value)) {
+    return value.toUpperCase(); // TypeScript knows value is string
+  }
+  return "";
+}
+```
+
+---
+
 ## isUndefined
 
 Checks if a value is strictly `undefined`.
@@ -283,26 +560,55 @@ function checkValue(value: string | null | undefined) {
 
 ## Comparison Table
 
-| Value       | `isNil` | `isNull` | `isUndefined` |
-| ----------- | ------- | -------- | ------------- |
-| `null`      | ✓ true  | ✓ true   | ✗ false       |
-| `undefined` | ✓ true  | ✗ false  | ✓ true        |
-| `0`         | ✗ false | ✗ false  | ✗ false       |
-| `''`        | ✗ false | ✗ false  | ✗ false       |
-| `false`     | ✗ false | ✗ false  | ✗ false       |
-| `[]`        | ✗ false | ✗ false  | ✗ false       |
-| `{}`        | ✗ false | ✗ false  | ✗ false       |
+| Value        | `isBoolean` | `isFunction` | `isIterable` | `isNil` | `isNull` | `isNumber` | `isPlainObject` | `isPromise` | `isString` | `isUndefined` |
+| ------------ | ----------- | ------------ | ------------ | ------- | -------- | ---------- | --------------- | ----------- | ---------- | ------------- |
+| `null`       | ✗           | ✗            | ✗            | ✓       | ✓        | ✗          | ✗               | ✗           | ✗          | ✗             |
+| `undefined`  | ✗           | ✗            | ✗            | ✓       | ✗        | ✗          | ✗               | ✗           | ✗          | ✓             |
+| `true`       | ✓           | ✗            | ✗            | ✗       | ✗        | ✗          | ✗               | ✗           | ✗          | ✗             |
+| `false`      | ✓           | ✗            | ✗            | ✗       | ✗        | ✗          | ✗               | ✗           | ✗          | ✗             |
+| `0`          | ✗           | ✗            | ✗            | ✗       | ✗        | ✓          | ✗               | ✗           | ✗          | ✗             |
+| `42`         | ✗           | ✗            | ✗            | ✗       | ✗        | ✓          | ✗               | ✗           | ✗          | ✗             |
+| `''`         | ✗           | ✗            | ✓            | ✗       | ✗        | ✗          | ✗               | ✗           | ✓          | ✗             |
+| `'hello'`    | ✗           | ✗            | ✓            | ✗       | ✗        | ✗          | ✗               | ✗           | ✓          | ✗             |
+| `[]`         | ✗           | ✗            | ✓            | ✗       | ✗        | ✗          | ✗               | ✗           | ✗          | ✗             |
+| `{}`         | ✗           | ✗            | ✗            | ✗       | ✗        | ✗          | ✓               | ✗           | ✗          | ✗             |
+| `() => {}`   | ✗           | ✓            | ✗            | ✗       | ✗        | ✗          | ✗               | ✗           | ✗          | ✗             |
+| `Promise`    | ✗           | ✗            | ✗            | ✗       | ✗        | ✗          | ✗               | ✓           | ✗          | ✗             |
+| `new Set()`  | ✗           | ✗            | ✓            | ✗       | ✗        | ✗          | ✗               | ✗           | ✗          | ✗             |
+| `new Date()` | ✗           | ✗            | ✗            | ✗       | ✗        | ✗          | ✗               | ✗           | ✗          | ✗             |
 
 ## Import
 
 ::: code-group
 
 ```typescript [Category Import (Recommended)]
-import { isNil, isNull, isUndefined } from "jalutils/type";
+import {
+  isBoolean,
+  isFunction,
+  isIterable,
+  isNil,
+  isNull,
+  isNumber,
+  isPlainObject,
+  isPromise,
+  isString,
+  isUndefined,
+} from "jalutils/type";
 ```
 
 ```typescript [Named Import]
-import { isNil, isNull, isUndefined } from "jalutils";
+import {
+  isBoolean,
+  isFunction,
+  isIterable,
+  isNil,
+  isNull,
+  isNumber,
+  isPlainObject,
+  isPromise,
+  isString,
+  isUndefined,
+} from "jalutils";
 ```
 
 :::
