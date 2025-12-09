@@ -46,8 +46,14 @@ export default defineConfig({
             text: 'Function',
             link: '/api/function',
             items: [
+              { text: 'compose', link: '/api/function#compose' },
+              { text: 'curry', link: '/api/function#curry' },
               { text: 'debounce', link: '/api/function#debounce' },
+              { text: 'flow', link: '/api/function#flow' },
               { text: 'memoize', link: '/api/function#memoize' },
+              { text: 'once', link: '/api/function#once' },
+              { text: 'partial', link: '/api/function#partial' },
+              { text: 'pipe', link: '/api/function#pipe' },
               { text: 'throttle', link: '/api/function#throttle' }
             ]
           },
