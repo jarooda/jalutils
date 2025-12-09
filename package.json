@@ -1,6 +1,6 @@
 {
   "name": "jalutils",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": "Jalu Wibowo Aji <jaluwibowoaji@gmail.com> (https://jaluwibowo.id)",
   "license": "MIT",
   "description": "A collection of utility functions for JavaScript and TypeScript.",
@@ -54,10 +54,11 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "eslint . --ext .ts --max-warnings=0 && tsc && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "prepare": "husky",
+    "lint": "eslint . --ext .ts",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
