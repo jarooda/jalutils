@@ -11,5 +11,6 @@ Jalutils is organized into the following categories:
 - [Date](/api/date) - Functions for working with dates and timestamps
 - [Function](/api/function) - Higher-order functions and function utilities
 - [Math](/api/math) - Mathematical operations and calculations
+- [Object](/api/object) - Functions for manipulating and transforming objects
 - [String](/api/string) - Functions for manipulating and transforming strings
 - [Type](/api/type) - Type checking and validation utilities

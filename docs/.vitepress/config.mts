@@ -88,6 +88,22 @@ export default defineConfig({
             ]
           },
           {
+            text: 'Object',
+            link: '/api/object',
+            items: [
+              { text: 'clone', link: '/api/object#clone' },
+              { text: 'compare', link: '/api/object#compare' },
+              { text: 'defaults', link: '/api/object#defaults' },
+              { text: 'entries', link: '/api/object#entries' },
+              { text: 'keys', link: '/api/object#keys' },
+              { text: 'merge', link: '/api/object#merge' },
+              { text: 'omit', link: '/api/object#omit' },
+              { text: 'pick', link: '/api/object#pick' },
+              { text: 'transformKeys', link: '/api/object#transformkeys' },
+              { text: 'values', link: '/api/object#values' }
+            ]
+          },
+          {
             text: 'String',
             link: '/api/string',
             items: [
