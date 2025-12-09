@@ -159,3 +159,21 @@ const result = await timeout(
   10000,
 );
 ```
+
+## Import
+
+::: code-group
+
+```typescript [Category Import (Recommended)]
+import { parallel, retry, sleep, timeout } from "jalutils/async";
+```
+
+```typescript [Named Import]
+import { parallel, retry, sleep, timeout } from "jalutils";
+```
+
+:::
+
+```
+
+```

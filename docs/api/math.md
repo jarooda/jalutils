@@ -307,3 +307,39 @@ console.log(sum(1, 2, 3, 4, 5)); // 15
 console.log(sum(10, 20, 30)); // 60
 console.log(sum()); // 0
 ```
+
+---
+
+## Import
+
+::: code-group
+
+```typescript [Category Import (Recommended)]
+import {
+  average,
+  ceil,
+  clamp,
+  floor,
+  median,
+  percentile,
+  random,
+  round,
+  sum,
+} from "jalutils/math";
+```
+
+```typescript [Named Import]
+import {
+  average,
+  ceil,
+  clamp,
+  floor,
+  median,
+  percentile,
+  random,
+  round,
+  sum,
+} from "jalutils";
+```
+
+:::
