@@ -29,9 +29,14 @@ export default defineConfig({
             text: 'Array',
             link: '/api/array',
             items: [
+              { text: 'chunk', link: '/api/array#chunk' },
+              { text: 'difference', link: '/api/array#difference' },
               { text: 'flatten', link: '/api/array#flatten' },
+              { text: 'groupBy', link: '/api/array#groupby' },
               { text: 'intersection', link: '/api/array#intersection' },
+              { text: 'pluck', link: '/api/array#pluck' },
               { text: 'sample', link: '/api/array#sample' },
+              { text: 'shuffle', link: '/api/array#shuffle' },
               { text: 'union', link: '/api/array#union' }
             ]
           },
