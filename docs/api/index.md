@@ -7,6 +7,7 @@ Welcome to the Jalutils API Reference. This documentation provides detailed info
 Jalutils is organized into the following categories:
 
 - [Array](/api/array) - Functions for manipulating and working with arrays
+- [Async](/api/async) - Functions for asynchronous operations and concurrency control
 - [Date](/api/date) - Functions for working with dates and timestamps
 - [Function](/api/function) - Higher-order functions and function utilities
 - [Math](/api/math) - Mathematical operations and calculations

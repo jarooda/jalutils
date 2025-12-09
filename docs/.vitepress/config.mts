@@ -41,6 +41,16 @@ export default defineConfig({
             ]
           },
           {
+            text: 'Async',
+            link: '/api/async',
+            items: [
+              { text: 'parallel', link: '/api/async#parallel' },
+              { text: 'retry', link: '/api/async#retry' },
+              { text: 'sleep', link: '/api/async#sleep' },
+              { text: 'timeout', link: '/api/async#timeout' }
+            ]
+          },
+          {
             text: 'Date',
             link: '/api/date',
             items: [
