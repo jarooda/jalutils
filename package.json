@@ -54,10 +54,11 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "eslint . --ext .ts --max-warnings=0 && tsc && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "prepare": "husky",
+    "lint": "eslint . --ext .ts",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
