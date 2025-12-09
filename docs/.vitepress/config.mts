@@ -63,6 +63,21 @@ export default defineConfig({
             ]
           },
           {
+            text: 'Math',
+            link: '/api/math',
+            items: [
+              { text: 'average', link: '/api/math#average' },
+              { text: 'ceil', link: '/api/math#ceil' },
+              { text: 'clamp', link: '/api/math#clamp' },
+              { text: 'floor', link: '/api/math#floor' },
+              { text: 'median', link: '/api/math#median' },
+              { text: 'percentile', link: '/api/math#percentile' },
+              { text: 'random', link: '/api/math#random' },
+              { text: 'round', link: '/api/math#round' },
+              { text: 'sum', link: '/api/math#sum' }
+            ]
+          },
+          {
             text: 'String',
             link: '/api/string',
             items: [
