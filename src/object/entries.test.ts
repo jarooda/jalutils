@@ -36,7 +36,7 @@ describe("entries", () => {
     const original = { items: [1, 2, 3] };
     const result = entries(original);
 
-    result[0][1].push(4);
+    (result[0][1] as number[]).push(4);
 
     expect(original.items).toEqual([1, 2, 3]);
   });
@@ -104,7 +104,7 @@ describe("entries", () => {
     const original = { user: { name: "John", age: 25 } };
     const result = entries(original);
 
-    result[0][1].age = 30;
+    (result[0][1] as { name: string; age: number }).age = 30;
 
     expect(original.user.age).toBe(25);
   });

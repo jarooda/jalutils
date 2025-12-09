@@ -30,8 +30,8 @@ describe("values", () => {
     const original = { items: [1, 2, 3], data: { count: 5 } };
     const result = values(original);
 
-    result[0].push(4);
-    result[1].count = 10;
+    (result[0] as number[]).push(4);
+    (result[1] as { count: number }).count = 10;
 
     expect(original.items).toEqual([1, 2, 3]);
     expect(original.data.count).toBe(5);
@@ -93,7 +93,7 @@ describe("values", () => {
     };
     const result = values(original);
 
-    result[0].age = 30;
+    (result[0] as { name: string; age: number }).age = 30;
 
     expect(original.user.age).toBe(25);
   });
@@ -151,7 +151,7 @@ describe("values", () => {
     const original = { arr1: [1, 2, 3], arr2: [4, 5, 6] };
     const result = values(original);
 
-    result[0].push(99);
+    (result[0] as number[]).push(99);
 
     expect(original.arr1).toEqual([1, 2, 3]);
   });
