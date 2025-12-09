@@ -1,6 +1,6 @@
 {
   "name": "jalutils",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "author": "Jalu Wibowo Aji <jaluwibowoaji@gmail.com> (https://jaluwibowo.id)",
   "license": "MIT",
   "description": "A collection of utility functions for JavaScript and TypeScript.",
