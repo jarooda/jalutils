@@ -4,9 +4,13 @@ import dts from "vite-plugin-dts";
 
 const entries = [
   resolve(__dirname, "src/index.ts"),
-  resolve(__dirname, "src/function/index.ts"),
   resolve(__dirname, "src/array/index.ts"),
+  resolve(__dirname, "src/async/index.ts"),
   resolve(__dirname, "src/date/index.ts"),
+  resolve(__dirname, "src/function/index.ts"),
+  resolve(__dirname, "src/math/index.ts"),
+  resolve(__dirname, "src/object/index.ts"),
+  resolve(__dirname, "src/string/index.ts"),
   resolve(__dirname, "src/type/index.ts"),
 ];
 

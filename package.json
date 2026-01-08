@@ -1,6 +1,6 @@
 {
   "name": "jalutils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Jalu Wibowo Aji <jaluwibowoaji@gmail.com> (https://jaluwibowo.id)",
   "license": "MIT",
   "description": "A collection of utility functions for JavaScript and TypeScript.",
@@ -28,25 +28,45 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
     },
-    "./function": {
-      "types": "./dist/function/index.d.ts",
-      "import": "./dist/function/index.js",
-      "require": "./dist/function/index.js"
-    },
     "./array": {
       "types": "./dist/array/index.d.ts",
-      "import": "./dist/array/index.js",
-      "require": "./dist/array/index.js"
+      "import": "./dist/array/index.es.js",
+      "require": "./dist/array/index.cjs.js"
+    },
+    "./async": {
+      "types": "./dist/async/index.d.ts",
+      "import": "./dist/async/index.es.js",
+      "require": "./dist/async/index.cjs.js"
     },
     "./date": {
       "types": "./dist/date/index.d.ts",
-      "import": "./dist/date/index.js",
-      "require": "./dist/date/index.js"
+      "import": "./dist/date/index.es.js",
+      "require": "./dist/date/index.cjs.js"
+    },
+    "./function": {
+      "types": "./dist/function/index.d.ts",
+      "import": "./dist/function/index.es.js",
+      "require": "./dist/function/index.cjs.js"
+    },
+    "./math": {
+      "types": "./dist/math/index.d.ts",
+      "import": "./dist/math/index.es.js",
+      "require": "./dist/math/index.cjs.js"
+    },
+    "./object": {
+      "types": "./dist/object/index.d.ts",
+      "import": "./dist/object/index.es.js",
+      "require": "./dist/object/index.cjs.js"
+    },
+    "./string": {
+      "types": "./dist/string/index.d.ts",
+      "import": "./dist/string/index.es.js",
+      "require": "./dist/string/index.cjs.js"
     },
     "./type": {
       "types": "./dist/type/index.d.ts",
-      "import": "./dist/type/index.js",
-      "require": "./dist/type/index.js"
+      "import": "./dist/type/index.es.js",
+      "require": "./dist/type/index.cjs.js"
     }
   },
   "files": [
