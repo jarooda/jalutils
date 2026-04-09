@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/jalutils.svg)](https://www.npmjs.com/package/jalutils)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![NPM Downloads](https://img.shields.io/npm/d18m/jalutils)
 
 A collection of utility functions for JavaScript and TypeScript. Lightweight, tree-shakeable, and fully typed.
 
